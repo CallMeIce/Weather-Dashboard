@@ -20,7 +20,6 @@ body {
     -webkit-text-fill-color: transparent;  }
   
   .jumbotron {
-    text-align: left;
     background-image: linear-gradient(to right, skyblue, rgb(0, 2, 94));
     color: black;
     border-radius: 0;
