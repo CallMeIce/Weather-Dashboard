@@ -23,57 +23,20 @@
 //TODO WHEN I click on a city in the search history
 //TODO THEN I am again presented with current and future conditions for that city
 
-let APIKey = "8a1a83896610616dfd6f338bc91b14a2"
-let button = $("btn-primary")
+let APIKey = "8a1a83896610616dfd6f338bc91b14a2";
+let button = $("btn-primary");
+let cityName = $("cityName");
+let date = $("Date");
+let temp = $("Temperature");
+let wind = $("windSpeed");
+let uvIndex = $("uvIndex");
+let userInput = $("form-control");
 let history = [];
 
 function getApi() {
-    let requestUrl = "https://api.openweathermap.org/data/2.5/weather?q="
-    
-    fetch(requestUrl)
-        .then(function (response) {
-            return response.json();
-        })
-    .then(function (weather) {
-        console.log(weather);
-    
-    for (var i = 0; i < weather.length; i++)
-    })
+    let requestUrl = "${api}/data/2.5/weather?q=${input}&appid=${apiKey}";
+
 };
 
 
 button.on("click", getApi)
-
-
-
-// function getApi() {
-//   // fetch request gets a list of all the repos for the node.js organization
-//   var requestUrl = 'https://api.github.com/orgs/nodejs/repos';
-
-//   fetch(requestUrl)
-//     .then(function (response) {
-//       return response.json();
-// //     })
-//     .then(function (data) {
-//       console.log(data)
-//       //Loop over the data to generate a table, each table row will have a link to the repo url
-//       for (var i = 0; i < data.length; i++) {
-//         // Creating elements, tablerow, tabledata, and anchor
-//         var createTableRow = document.createElement('tr');
-//         var tableData = document.createElement('td');
-//         var link = document.createElement('a');
-
-//         // Setting the text of link and the href of the link
-//         link.textContent = data[i].html_url;
-//         link.href = data[i].html_url;
-
-//         // Appending the link to the tabledata and then appending the tabledata to the tablerow
-//         // The tablerow then gets appended to the tablebody
-//         tableData.appendChild(link);
-//         createTableRow.appendChild(tableData);
-//         tableBody.appendChild(createTableRow);
-//       }
-//     });
-// }
-
-// fetchButton.addEventListener('click', getApi);
