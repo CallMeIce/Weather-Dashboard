@@ -24,18 +24,21 @@
 //TODO THEN I am again presented with current and future conditions for that city
 
 let APIKey = "8a1a83896610616dfd6f338bc91b14a2";
-let button = $("btn-primary");
-let cityName = $("cityName");
-let date = $("Date");
-let temp = $("Temperature");
-let wind = $("windSpeed");
-let uvIndex = $("uvIndex");
-let userInput = $("form-control");
+let button = $(".btn-primary");
+let cityName = $("#cityName");
+let date = $("#Date");
+let temp = $("#Temperature");
+let wind = $("#windSpeed");
+let uvIndex = $("#uvIndex");
+let userInput = $(".form-control");
 let history = [];
 
-function getApi() {
-    console.log(event);
-    let requestUrl = "${api}/data/2.5/weather?q=${input}&appid=${apiKey}";
+function getApi(event) {
+    event.preventDefault();
+    console.log("submit");
+    
+    
+    let requestUrl = "api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}";
     console.log(userInput.value);
     fetch(requestUrl)
         .then(function (response) {
