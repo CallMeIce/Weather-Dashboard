@@ -34,8 +34,17 @@ let userInput = $("form-control");
 let history = [];
 
 function getApi() {
+    console.log(event);
     let requestUrl = "${api}/data/2.5/weather?q=${input}&appid=${apiKey}";
-
+    console.log(userInput.value);
+    fetch(requestUrl)
+        .then(function (response) {
+            return response.json();
+        })
+    .then(function (weather) {
+        console.log(weather);
+    
+     })
 };
 
 
