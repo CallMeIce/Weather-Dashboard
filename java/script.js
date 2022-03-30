@@ -62,6 +62,7 @@ function oneCall(lat, lon) {
 
 
         $("#location").append(userInput.val())
+        $("#icon").append(data.current.weather[0].icon)
         $("#currentTemp").append(data.current.temp);
         $("#currentUVI").append(data.current.uvi);
         $("#currentWind").append(data.current.wind_speed);
