@@ -144,36 +144,36 @@ function oneCall(lat, lon) {
 
 
 
-function fiveCall(lat, lon) {
-    let fiveDayCall = `${apiURL}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey}`
-    console.log(fiveDayCall);
-    fetch(fiveDayCall)
+// function fiveCall(lat, lon) {
+//     let fiveDayCall = `${apiURL}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey}`
+//     console.log(fiveDayCall);
+//     fetch(fiveDayCall)
 
-    .then((response) => response.json())
-     .then ((data) => {
-         console.log(data);
+//     .then((response) => response.json())
+//      .then ((data) => {
+//          console.log(data);
         
-         let location = userInput.val()
+//          let location = userInput.val()
       
-         let UV = data.daily[0].uvi
-         let windSpeed = data.daily[0].wind_speed
+//          let UV = data.daily[0].uvi
+//          let windSpeed = data.daily[0].wind_speed
 
-         let futureWeatherOne = document.createElement("div")
+//          let futureWeatherOne = document.createElement("div")
 
-        let locationOneEl = document.createElement("p")
-        let tempOneEl = document.createElement("p")
-        let UVOneEl = document.createElement("p")
-        let windSpeedOneEl = document.createElement("p")
+//         let locationOneEl = document.createElement("p")
+//         let tempOneEl = document.createElement("p")
+//         let UVOneEl = document.createElement("p")
+//         let windSpeedOneEl = document.createElement("p")
 
-        $("#cityNameOne") = `Location: ${location}`
-        tempOneEl.innerHTML = `temp: ${temp} F`
-        UVOneEl.textContent = `uv: ${UV}`
-        windSpeedOneEl.textContent = `wind_speed: ${windSpeed}`
+//         $("#cityNameOne") = `Location: ${location}`
+//         tempOneEl.innerHTML = `temp: ${temp} F`
+//         UVOneEl.textContent = `uv: ${UV}`
+//         windSpeedOneEl.textContent = `wind_speed: ${windSpeed}`
 
-        futureWeatherOne.append(locationOneEl, tempOneEl, UVOneEl, windSpeedOneEl)
-        dayOne.append(futureWeatherOne)
-        dayOne.innerHTML = ""
+//         futureWeatherOne.append(locationOneEl, tempOneEl, UVOneEl, windSpeedOneEl)
+//         dayOne.append(futureWeatherOne)
+//         dayOne.innerHTML = ""
 
 
-     })
-}
+//      })
+// }
