@@ -33,6 +33,8 @@ let wind = $("#windSpeed");
 let uvIndex = $("#uvIndex");
 let userInput = $("#userInput");
 let history = [];
+let weatherDiv = $("#weatherDiv")
+
 
 function getApi(event) {
     event.preventDefault();
@@ -59,25 +61,119 @@ function oneCall(lat, lon) {
      .then((response) => response.json())
      .then ((data) => {
          console.log(data);
+        let location = userInput.val()
+        let temp = data.current.temp
+        let UV = data.current.uvi
+        let windSpeed = data.current.wind_speed
+        let humidity = data.current.humidity
 
+        let weatherSection = document.createElement("div")
 
-        $("#location").append(userInput.val())
-        $("#icon").append(data.current.weather[0].icon)
-        $("#currentTemp").append(data.current.temp);
-        $("#currentUVI").append(data.current.uvi);
-        $("#currentWind").append(data.current.wind_speed);
-         console.log(data.current.temp);
+        let locationEl = document.createElement("p")
+        let tempEl = document.createElement("p")
+        let UVEl = document.createElement("p")
+        let windSpeedEl = document.createElement("p")
+        let humidityEl = document.createElement("p")
+
+        locationEl.innerHTML = `Location: ${location}`
+        tempEl.innerHTML = `temp: ${temp} F`
+        UVEl.textContent = `uv: ${UV}`
+        windSpeedEl.textContent = `wind_speed: ${windSpeed}`
+        humidityEl.innerHTML = `humidity: ${humidity}`
+
+        weatherSection.append(locationEl, tempEl, UVEl, windSpeedEl, humidityEl)
+        weatherDiv.append(weatherSection)
+        weatherDiv.innerHTML = ""
+
+        // $("#location").append(userInput.val())
+        // $("#icon").append(data.current.weather[0].icon)
+        // $("#currentTemp").append(tempEl);
+        // $("#currentUVI").append(UVEl);
+        // $("#currentWind").append(windSpeedEl);
+        
+
+        console.log(data.current.temp);
          console.log(data.current.uvi);
          console.log(data.current.wind_speed);
-        
-     
-     
-     
+        console.log(data.daily[0].temp.day);
+        console.log(data.daily[0].uvi);
+        console.log(data.daily[0].wind_speed);
+
+
+        //*Day One Append
+        cityNameOne.append(userInput.val())
+        tempOne.append(data.daily[0].temp.day)
+        humidityOne.append(data.daily[0].humidity)
+        windSpeedOne.append(data.daily[0].wind_speed)
+        uvIndexOne.append(data.daily[0].uvi)
+
+        //*Day Two
+        cityNameTwo.append(userInput.val())
+        tempTwo.append(data.daily[1].temp.day)
+        humidityTwo.append(data.daily[1].humidity)
+        windSpeedTwo.append(data.daily[1].wind_speed)
+        uvIndexTwo.append(data.daily[1].uvi)
+
+
+        //*Day Three
+        cityNameThree.append(userInput.val())
+        humidityThree.append(data.daily[2].humidity)
+        tempThree.append(data.daily[2].temp.day)
+        humidityOne.append(data.daily[0].humidity)
+        windSpeedThree.append(data.daily[2].wind_speed)
+        uvIndexThree.append(data.daily[2].uvi)
+
+
+        //*Day Four
+        cityNameFour.append(userInput.val())
+        humidityFour.append(data.daily[3].humidity)
+        tempFour.append(data.daily[3].temp.day)
+        windSpeedFour.append(data.daily[3].wind_speed)
+        uvIndexFour.append(data.daily[3].uvi)
+
+
+        //*Day Five
+        cityNameFive.append(userInput.val())
+        humidityFive.append(data.daily[4].humidity)
+        tempFive.append(data.daily[4].temp.day)
+        windSpeedFive.append(data.daily[4].wind_speed)
+        uvIndexFive.append(data.daily[4].uvi)
+
         })
 }
 
 
 
-// function fiveCall() {
-//     let fiveDayCall = `$`
-// }
+function fiveCall(lat, lon) {
+    let fiveDayCall = `${apiURL}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey}`
+    console.log(fiveDayCall);
+    fetch(fiveDayCall)
+
+    .then((response) => response.json())
+     .then ((data) => {
+         console.log(data);
+        
+         let location = userInput.val()
+      
+         let UV = data.daily[0].uvi
+         let windSpeed = data.daily[0].wind_speed
+
+         let futureWeatherOne = document.createElement("div")
+
+        let locationOneEl = document.createElement("p")
+        let tempOneEl = document.createElement("p")
+        let UVOneEl = document.createElement("p")
+        let windSpeedOneEl = document.createElement("p")
+
+        $("#cityNameOne") = `Location: ${location}`
+        tempOneEl.innerHTML = `temp: ${temp} F`
+        UVOneEl.textContent = `uv: ${UV}`
+        windSpeedOneEl.textContent = `wind_speed: ${windSpeed}`
+
+        futureWeatherOne.append(locationOneEl, tempOneEl, UVOneEl, windSpeedOneEl)
+        dayOne.append(futureWeatherOne)
+        dayOne.innerHTML = ""
+
+
+     })
+}
